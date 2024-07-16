@@ -7,6 +7,7 @@ import Element.Font
 import Pages.Home
 import Pages.Notes
 import Route exposing (Route(..))
+import String.Extra
 import Types exposing (FrontendModel(..), FrontendMsg, LoadedModel)
 import View.Color
 
@@ -88,14 +89,28 @@ headerView model route config =
             , Element.Background.color View.Color.blue
             , Element.Font.color (Element.rgb 1 1 1)
             ]
-            [ Element.link
-                (linkStyle route HomepageRoute)
-                { url = Route.encode HomepageRoute, label = Element.text "Home" }
-            , Element.link
-                (linkStyle route NotesRoute)
-                { url = Route.encode NotesRoute, label = Element.text "Notes" }
-            ]
+            (makeLinks route)
         )
+
+
+homePageLink : Route -> Element msg
+homePageLink route =
+    Element.link
+        (linkStyle route HomepageRoute)
+        { url = Route.encode HomepageRoute, label = Element.text "Home" }
+
+
+makeLink : Route -> ( Route, String ) -> Element msg
+makeLink currentRoute ( route, name ) =
+    Element.link
+        (linkStyle currentRoute route)
+        { url = Route.encode route, label = Element.text (String.Extra.toTitleCase name) }
+
+
+makeLinks : Route -> List (Element msg)
+makeLinks route =
+    homePageLink route
+        :: List.map (makeLink route) Route.routesAndNames
 
 
 linkStyle : Route -> Route -> List (Element.Attribute msg)

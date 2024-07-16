@@ -18,6 +18,3 @@ config : List Rule
 config =
     []
 
---type FrontendModel
---    = Loading LoadingModel
---    | Loaded LoadedModel

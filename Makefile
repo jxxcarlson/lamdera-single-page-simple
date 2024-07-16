@@ -1,7 +1,8 @@
 .PHONY: install uninstall deps
 
 install:
-	echo "Installing..."
+	echo "Replacing src with src-original..."
+	cp -r src-original/. src/
 
 deps:
 	echo "Installing dependencies..."
@@ -9,6 +10,10 @@ deps:
 	lamdera install elm/time
 	lamdera install mdgriffith/elm-ui
 	lamdera install elmcraft/core-extra
+
+update-original:
+	echo "Updating src-original ..."
+	cp -r src/. src-original/
 
 uninstall:
 	echo "Uninstalling..."
