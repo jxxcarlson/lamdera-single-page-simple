@@ -17,3 +17,7 @@ import Review.Rule exposing (Rule)
 config : List Rule
 config =
     []
+
+--type FrontendModel
+--    = Loading LoadingModel
+--    | Loaded LoadedModel
