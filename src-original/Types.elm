@@ -1,34 +1,70 @@
 module Types exposing (..)
 
-import Browser exposing (UrlRequest)
+import Browser
 import Browser.Navigation exposing (Key)
+import Lamdera exposing (ClientId, SessionId)
+import Route exposing (Route)
+import Time
 import Url exposing (Url)
 
 
-type alias FrontendModel =
-    { key : Key
-    , message : String
+type alias BackendModel =
+    { counter : Int
     }
 
 
-type alias BackendModel =
-    { message : String
+type FrontendModel
+    = Loading LoadingModel
+    | Loaded LoadedModel
+
+
+type alias LoadingModel =
+    { key : Key
+    , initUrl : Url
+    , now : Time.Posix
+    , window : Maybe { width : Int, height : Int }
+    , route : Route
+    }
+
+
+type alias LoadedModel =
+    { key : Key
+    , now : Time.Posix
+    , window : { width : Int, height : Int }
+    , route : Route
+    , message : String
+    , showTooltip : Bool
+    , counter : Int
     }
 
 
 type FrontendMsg
-    = UrlClicked UrlRequest
+    = Increment
+    | Decrement
+    | UrlClicked Browser.UrlRequest
     | UrlChanged Url
-    | NoOpFrontendMsg
+    | Tick Time.Posix
+    | GotWindowSize Int Int
+    | MouseDown
+    | SetViewport
+    | NoOp
 
 
 type ToBackend
-    = NoOpToBackend
+    = CounterIncremented
+    | CounterDecremented
 
 
 type BackendMsg
-    = NoOpBackendMsg
+    = ClientConnected SessionId ClientId
+    | Noop
 
 
 type ToFrontend
-    = NoOpToFrontend
+    = CounterNewValue Int String
+
+
+type BackendDataStatus
+    = Sunny
+    | LoadedBackendData
+    | Spell String Int
