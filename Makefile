@@ -1,8 +1,14 @@
 .PHONY: install uninstall deps
 
-install:
+base:
 	echo "Replacing src with src-original..."
 	cp -r src-original/. src/
+
+add-page:
+	echo "Adding page..."
+	cp -r src-original/. src/
+    # run the rule set
+
 
 deps:
 	echo "Installing dependencies..."
