@@ -7,7 +7,7 @@ base:
 add-page:
 	echo "Adding page..."
 	cp -r src-original/. src/
-    # run the rule set
+	npx elm-review --fix-all
 
 
 deps:
@@ -20,6 +20,9 @@ deps:
 update-original:
 	echo "Updating src-original ..."
 	cp -r src/. src-original/
+
+copy-src:
+	cp -r src/.  src-copy/
 
 uninstall:
 	echo "Uninstalling..."

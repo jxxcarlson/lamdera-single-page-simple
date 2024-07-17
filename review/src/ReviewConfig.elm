@@ -12,9 +12,31 @@ when inside the directory containing this file.
 -}
 
 import Review.Rule exposing (Rule)
+import Install.TypeVariant as TypeVariant
+import Install.ClauseInCase as ClauseInCase
+import Install.Import as Import
+import String.Extra
+
+
 
 
 config : List Rule
 config =
-    []
+   addPages [ "quotes", "jokes"]
+
+addPages : List String -> List Rule
+addPages pageNames =
+    List.concatMap addPage pageNames
+
+addPage : String -> List Rule
+addPage page =
+   let
+    routeTitle = String.Extra.toTitleCase page
+    routeName = routeTitle ++ "Route"
+
+   in
+    [ TypeVariant.makeRule "Route" "Route" [ routeName ]
+    , ClauseInCase.init "View.Main" "loadedView" routeName ("generic model Pages." ++ (routeTitle) ++ ".view") |> ClauseInCase.makeRule
+    , Import.qualified "View.Main" ["Pages." ++ routeTitle] |> Import.makeRule
+    ]
 

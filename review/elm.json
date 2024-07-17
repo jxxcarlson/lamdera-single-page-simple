@@ -7,6 +7,7 @@
     "dependencies": {
         "direct": {
             "elm/core": "1.0.5",
+            "elmcraft/core-extra": "2.0.0",
             "jfmengels/elm-review": "2.14.0",
             "jxxcarlson/elm-review-codeinstaller": "11.0.2",
             "stil4m/elm-syntax": "7.3.2"
@@ -22,7 +23,6 @@
             "elm/time": "1.0.0",
             "elm/virtual-dom": "1.0.3",
             "elm-explorations/test": "2.2.0",
-            "elmcraft/core-extra": "2.0.0",
             "miniBill/elm-unicode": "1.1.1",
             "pzp1997/assoc-list": "1.0.0",
             "rtfeldman/elm-hex": "1.0.0",
