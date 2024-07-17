@@ -45,7 +45,8 @@ routesAndNames =
     [ ( NotesRoute, "notes" ), (JokesRoute, "jokes"), (QuotesRoute, "quotes") ]
 ```
 
-This will be corrected in a day or two via something like this:
+Instead we hack a solution with a `sed` script (see clause add-pages of the Makefile).
+This hack will be corrected in a day or two via a rule something like this:
 
 ```
 Install.AddToList.config "Routes" "routesAndNames" 
