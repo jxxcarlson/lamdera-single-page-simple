@@ -10,13 +10,12 @@ type Route
     = HomepageRoute
     | NotesRoute
 
-routesAndNames1 : List ( Route, String )
-routesAndNames1 =
-    [ ( NotesRoute, "notes" ) ]
+
 
 routesAndNames : List ( Route, String )
 routesAndNames =
-    [ ( NotesRoute, "notes" ), (JokesRoute, "jokes"), (QuotesRoute, "quotes") ]
+    [ ( NotesRoute, "notes" )]
+
 
 encodeRoute : Route -> List String
 encodeRoute route =
