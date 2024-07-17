@@ -1,7 +1,7 @@
 
 # Demo: jxxcarlson/elm-review-codeinstaller
 
-This base version of this application is Lamdera app with two 
+The base version of this application is a Lamdera app with two 
 pages, Home and Notes.  To run it do this:
 
 ```zshrc
