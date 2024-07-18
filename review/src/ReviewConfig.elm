@@ -18,8 +18,6 @@ import Install.Import as Import
 import String.Extra
 
 
-
-
 config : List Rule
 config =
    addPages [ "quotes", "jokes"]
