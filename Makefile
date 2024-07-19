@@ -7,7 +7,7 @@ base:
 add-pages:
 	echo "Adding pages..."
 	cp -r src-original/. src/
-	sed 's/\(\[ *( *NotesRoute, *"notes" *) *\)\(.*\)\(]\)/\1, ( JokesRoute, "jokes" ), ( QuotesRoute, "quotes" ) \3/' src/Route.elm > temp && mv temp src/Route.elm
+	# sed 's/\(\[ *( *NotesRoute, *"notes" *) *\)\(.*\)\(]\)/\1, ( JokesRoute, "jokes" ), ( QuotesRoute, "quotes" ) \3/' src/Route.elm > temp && mv temp src/Route.elm
 	npx elm-review --fix-all
 
 

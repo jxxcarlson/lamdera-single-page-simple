@@ -16,6 +16,7 @@ import Install.TypeVariant as TypeVariant
 import Install.ClauseInCase as ClauseInCase
 import Install.Import as Import
 import String.Extra
+import Install.ElementToList as ElementToList
 
 
 config : List Rule
@@ -33,8 +34,10 @@ addPage page =
     routeName = routeTitle ++ "Route"
 
    in
-    [ TypeVariant.makeRule "Route" "Route" [ routeName ]
-    , ClauseInCase.init "View.Main" "loadedView" routeName ("generic model Pages." ++ (routeTitle) ++ ".view") |> ClauseInCase.makeRule
+    [
+      TypeVariant.makeRule "Route" "Route" [ routeName ]
+    , ClauseInCase.config "View.Main" "loadedView" routeName ("generic model Pages." ++ (routeTitle) ++ ".view") |> ClauseInCase.makeRule
     , Import.qualified "View.Main" ["Pages." ++ routeTitle] |> Import.makeRule
+     ElementToList.makeRule "Route" "routesAndNames" [ "( JokesRoute, \"jokes\" )", "( QuotesRoute, \"quotes\" )"]
     ]
 
