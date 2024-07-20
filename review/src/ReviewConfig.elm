@@ -21,8 +21,7 @@ import Install.ElementToList as ElementToList
 
 config : List Rule
 config =
-    buggy
-   -- addPages [ "quotes", "jokes"]
+   addPages [ "quotes", "jokes"]
 
 addPages : List String -> List Rule
 addPages pageNames =
@@ -39,13 +38,6 @@ addPage page =
       TypeVariant.makeRule "Route" "Route" [ routeName ]
     , ClauseInCase.config "View.Main" "loadedView" routeName ("generic model Pages." ++ (routeTitle) ++ ".view") |> ClauseInCase.makeRule
     , Import.qualified "View.Main" ["Pages." ++ routeTitle] |> Import.makeRule
-    , ElementToList.makeRule "Route" "routesAndNames" [ "( JokesRoute, \"jokes\" )", "( QuotesRoute, \"quotes\" )"]
-    ]
-
-buggy : List Rule
-buggy=
-    [
-        ElementToList.makeRule "Route" "routesAndNames" [ "( JokesRoute, \"jokes\" )", "( QuotesRoute, \"quotes\" )"]
-      , ElementToList.makeRule "Route" "foo" [ "abracadabra"]
+    , ElementToList.makeRule "Route" "routesAndNames" [ "(JokesRoute, \"jokes\")", "(QuotesRoute, \"quotes\")"]
     ]
 
