@@ -8,8 +8,16 @@ add-pages:
 	echo "Adding pages..."
 	cp -r src-original/. src/
 	# sed 's/\(\[ *( *NotesRoute, *"notes" *) *\)\(.*\)\(]\)/\1, ( JokesRoute, "jokes" ), ( QuotesRoute, "quotes" ) \3/' src/Route.elm > temp && mv temp src/Route.elm
-	npx elm-review --fix-all
+	npx elm-review src/Routes.elm --fix-all
 
+base-x:
+	echo "Replacing contents of experiment with experiment-original..."
+	cp -r experiment-original/. experiment/
+
+run-x:
+	echo "Replacing contents of experiment with experiment-original..."
+	cp -r experiment-original/. experiment/
+	npx elm-review experiment/Route.elm --fix-all
 
 sed:
 	echo "Running sed ..."
